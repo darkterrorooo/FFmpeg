@@ -1621,7 +1621,13 @@ static int read_frame_internal(AVFormatContext *s, AVPacket *pkt)
                av_ts2str(pkt->pts),
                av_ts2str(pkt->dts),
                pkt->size, pkt->duration, pkt->flags);
-
+    //ljg
+    AVStream *st;
+    st  = s->streams[pkt->stream_index];
+    
+    pkt->display_scaling_mode = st->codec->display_scaling_mode;
+    
+    
     return ret;
 }
 

@@ -287,6 +287,15 @@ static inline int parse_nal_units(AVCodecParserContext *s,
         case NAL_PPS:
             ff_h264_decode_picture_parameter_set(h, h->gb.size_in_bits);
             break;
+            case 0x0f:{
+                //av_log(NULL, AV_LOG_INFO,"264parer userdata\n");
+                get_bits(&h->gb,8);
+                int mode = get_bits(&h->gb,8);
+                //ljg
+                avctx->display_scaling_mode = mode;
+            }
+                return 0;
+
         case NAL_SEI:
             ff_h264_decode_sei(h);
             break;

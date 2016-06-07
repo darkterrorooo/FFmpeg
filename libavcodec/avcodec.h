@@ -1512,6 +1512,10 @@ typedef struct AVPacket {
     attribute_deprecated
     int64_t convergence_duration;
 #endif
+    
+    //ljg
+    int display_scaling_mode;
+
 } AVPacket;
 #define AV_PKT_FLAG_KEY     0x0001 ///< The packet contains a keyframe
 #define AV_PKT_FLAG_CORRUPT 0x0002 ///< The packet content is corrupted
@@ -3401,6 +3405,9 @@ typedef struct AVCodecContext {
 #if FF_API_ASS_TIMING
 #define FF_SUB_TEXT_FMT_ASS_WITH_TIMINGS 1
 #endif
+
+    //ljg
+    int display_scaling_mode;
 
 } AVCodecContext;
 
